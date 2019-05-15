@@ -52,14 +52,18 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ad
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    /*
                     Intent shareIntent = new Intent(itemView.getContext(), IngredientClass.class);
                     Ingredient ingredient = ingredients.get(getAdapterPosition());
                     shareIntent.putExtra(IntentConstants.INGREDIENT, ingredient.quantity);
                     shareIntent.putExtra(IntentConstants.INGREDIENT_MEASURE, ingredient.measure);
                     shareIntent.putExtra(IntentConstants.INGREDIENT_QUANTITY, ingredient.quantity);
                     itemView.getContext().startActivity(shareIntent);
+                    */
                 }
+
             });
+
         }
         public void bind(Double quentity) {
             quantityTextView=itemView.findViewById(R.id.quantityText);
