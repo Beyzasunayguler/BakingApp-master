@@ -48,23 +48,11 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.AdapterHolder>
                 @Override
                 public void onClick(View v) {
                     Intent myIntent=new Intent(v.getContext(),StepActivity.class);
-                    //myIntent.putExtra(IntentConstants.CAKE_DESCRIPTION,step.get(getAdapterPosition()).description);
                     Step stepKey=step.get(getAdapterPosition());
-                    myIntent.putExtra(IntentConstants.CAKE_DESCRIPTION,stepKey.description);
+                    myIntent.putExtra(IntentConstants.CAKE_DESCRIPTION,stepKey);
                     v.getContext().startActivity(myIntent);
                 }
             });
-
-                /*
-                       itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent myIntent = new Intent(v.getContext(), YenıClass.class);
-                    myIntent.putExtra(key buraya, ingredients.get(getAdapterPosition()));
-                    v.getContext().startActivity(myIntent);
-                }
-            });
-             */
         }
 
         public void bind(final String shortDescriptionText) {

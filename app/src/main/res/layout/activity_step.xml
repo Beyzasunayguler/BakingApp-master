@@ -12,8 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/descriptionText"
+            android:layout_below="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
