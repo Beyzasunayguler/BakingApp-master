@@ -12,39 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/cakeImage"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="91dp"
-            android:padding="@dimen/cardview_default_elevation"
-            android:layout_marginRight="91dp"
-            android:layout_marginLeft="70dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentLeft="true" />
-
         <TextView
             android:id="@+id/cakeNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cakeImage"
+            android:layout_below="@+id/ingredientButton"
             android:layout_margin="16dp"
             android:textAlignment="center"
             android:textColor="@color/secondaryText"
             android:textSize="24sp"
             android:textStyle="bold" />
-        <TextView
+
+        <Button
+            android:id="@+id/ingredientButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cakeServingsText"
-            android:textColor="@color/secondaryText"
-            android:layout_below="@+id/cakeNameText"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:background="@color/colorPrimary"
+            android:text="Ingredient"
+            android:textColor="@color/secondaryText"/>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/stepRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
 
 
     </RelativeLayout>

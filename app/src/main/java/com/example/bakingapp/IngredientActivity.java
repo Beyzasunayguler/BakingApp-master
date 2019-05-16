@@ -16,23 +16,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class IngredientClass extends AppCompatActivity {
+public class IngredientActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private IngredientAdapter ingredientAdapter;
     private ProgressBar ingredientLoadingBar;
-    @BindView(R.id.ingredientText)
-    private TextView ingredientText;
-    @BindView(R.id.measureText)
-    private TextView measureText;
-    @BindView(R.id.quantityText)
-    TextView quantityText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_class);
-        ButterKnife.bind(this);
+        List<Ingredient> ingredients = getIntent().getExtras().getParcelableArrayList(IntentConstants.INGREDIENT);
         recyclerView = (RecyclerView) findViewById(R.id.ingredientRecyclerView);
         ingredientLoadingBar = (ProgressBar) findViewById(R.id.ingredientLoadingBar);
         LinearLayoutManager linearLayoutManager =
@@ -40,17 +33,6 @@ public class IngredientClass extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         ingredientAdapter = new IngredientAdapter();
         recyclerView.setAdapter(ingredientAdapter);
-
-        if (getIntent().getExtras() == null) {
-            Toast.makeText(this, "Something went wrong, check the logs", Toast.LENGTH_LONG).show();
-        } else {
-            String ingredient = getIntent().getExtras().getString(IntentConstants.INGREDIENT);
-            String measure = getIntent().getExtras().getString(IntentConstants.INGREDIENT_MEASURE);
-            Double quantity = getIntent().getExtras().getDouble(IntentConstants.INGREDIENT_QUANTITY);
-            quantityText.setText(String.valueOf(quantity));
-            measureText.setText(measure);
-            ingredientText.setText(ingredient);
-        }
-
+        ingredientAdapter.setIngredientsData(ingredients);
     }
 }

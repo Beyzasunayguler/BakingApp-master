@@ -15,7 +15,7 @@ import java.util.List;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.AdapterHolder> {
     public List<Ingredient> ingredients;
 
-    public void setIngredientsData (List<Ingredient> data) {
+    public void setIngredientsData(List<Ingredient> data) {
         this.ingredients = data;
         notifyDataSetChanged();
     }
@@ -29,12 +29,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ad
 
     @Override
     public void onBindViewHolder(@NonNull AdapterHolder adapterHolder, int position) {
-     //adapterHolder.bind(ingredients.get(position).ingredient);
-     adapterHolder.bind(ingredients.get(position).measure);
-     adapterHolder.bind(ingredients.get(position).quantity);
-
-
-
+        adapterHolder.bind(ingredients.get(position));
     }
 
     @Override
@@ -49,32 +44,16 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ad
 
         public AdapterHolder(@NonNull final View itemView) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    /*
-                    Intent shareIntent = new Intent(itemView.getContext(), IngredientClass.class);
-                    Ingredient ingredient = ingredients.get(getAdapterPosition());
-                    shareIntent.putExtra(IntentConstants.INGREDIENT, ingredient.quantity);
-                    shareIntent.putExtra(IntentConstants.INGREDIENT_MEASURE, ingredient.measure);
-                    shareIntent.putExtra(IntentConstants.INGREDIENT_QUANTITY, ingredient.quantity);
-                    itemView.getContext().startActivity(shareIntent);
-                    */
-                }
-
-            });
-
-        }
-        public void bind(Double quentity) {
-            quantityTextView=itemView.findViewById(R.id.quantityText);
-            quantityTextView.setText(String.valueOf(quentity));
-        }
-
-        public void bind(String measure) {
-            measureTextView=itemView.findViewById(R.id.measureText);
-            measureTextView.setText(measure);
+            quantityTextView = itemView.findViewById(R.id.quantityText);
+            ingredientText = itemView.findViewById(R.id.ingredientText);
+            measureTextView = itemView.findViewById(R.id.measureText);
 
         }
 
+        public void bind(Ingredient ıngredient) {
+            quantityTextView.setText(String.valueOf(ıngredient.quantity));
+            ingredientText.setText(ıngredient.ingredient);
+            measureTextView.setText(ıngredient.measure);
+        }
     }
 }
