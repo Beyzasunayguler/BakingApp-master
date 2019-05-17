@@ -1,6 +1,10 @@
 package com.example.bakingapp;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +54,15 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), IngredientActivity.class);
                 intent.putParcelableArrayListExtra(IntentConstants.INGREDIENT, (ArrayList<? extends Parcelable>) ingredients);
+                SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE);
+                String ingredientText = "";
+                for (int i = 0; i < ingredients.size(); i++) {
+                    ingredientText += ingredients.get(i).ingredient + "\n" + ingredients.get(i).measure + "\n" + ingredients.get(i).quantity + "\n\n";
+                }
+                preferences.edit().putString(getString(R.string.widget_ingredients),ingredientText).apply();
+                Intent widgetIntent = new Intent(DetailActivity.this, IngredientWidget.class);
+                widgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                sendBroadcast(widgetIntent);
                 startActivity(intent);
             }
         });
